@@ -21,12 +21,24 @@
 // buffer is like a bus stop 
 
 // event driven architecture
+// express ia all about middleware 
+// request -> middleware(req,res,next) => {...} next() ---> Middleware(req,res,next) => {...} res.send() ---> Response
+// next is another function has to allow your request to travel in the next midddleware
 
 const http = require('http');
 
 const express = require('express');
 
 const app = express();
+app.use((req, res, next) => {
+    console.log('In the middleware');
+    next(); // allows the request to continue to the next middleware in line 
+});
+
+app.use((req, res, next) => {
+    console.log('In the another middleware');
+    // ...
+});
 
 const routes = require('./routes');
 
