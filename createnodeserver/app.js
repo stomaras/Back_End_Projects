@@ -30,7 +30,7 @@ const path = require('path')
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const adminRoutes = require('./routes/admin');
+const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 // this register some middleware call next in the end , before will do body parsing request 
@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(shopRoutes);
-app.use('/admin', adminRoutes);
+app.use('/admin', adminData.routes);
 
 // use handle all http methods
 app.use((req,res,next) => {
