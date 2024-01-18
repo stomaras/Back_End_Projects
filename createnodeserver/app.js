@@ -26,27 +26,27 @@
 // next is another function has to allow your request to travel in the next midddleware
 
 const http = require('http');
-
+const path = require('path')
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const app = express();
-app.use((req, res, next) => {
-    console.log('In the middleware');
-    next(); // allows the request to continue to the next middleware in line 
+const adminRoutes = require('./routes/admin');
+const shopRoutes = require('./routes/shop');
+
+// this register some middleware call next in the end , before will do body parsing request 
+// not parse all bodies like files or json but can data from forms
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(shopRoutes);
+app.use('/admin', adminRoutes);
+
+// use handle all http methods
+app.use((req,res,next) => {
+    res.status(404).sendFile(path.join(__dirname,'views','404.html'));
 });
 
-app.use((req, res, next) => {
-    console.log('In the another middleware');
-    // ...
-});
-
-const routes = require('./routes');
-
-const server = http.createServer(app);
-
-server.listen(3000);
-
-
+app.listen(3000);
 // Summary 
 // Client send a request to the server 
 // server store to database or manipulate files
