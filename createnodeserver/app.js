@@ -29,8 +29,14 @@ const http = require('http');
 const path = require('path')
 const express = require('express');
 const bodyParser = require('body-parser');
+const expressHbs = require('express-handlebars');
 const app = express();
-const adminData = require('./routes/admin');
+const errorController = require('./controllers/error');
+
+app.set('view engine', 'ejs');
+app.set('views', 'views');
+
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 // this register some middleware call next in the end , before will do body parsing request 
@@ -39,29 +45,9 @@ app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(shopRoutes);
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes);
 
 // use handle all http methods
-app.use((req,res,next) => {
-    res.status(404).sendFile(path.join(__dirname,'views','404.html'));
-});
+app.use(errorController.get404);
 
-app.listen(3000);
-// Summary 
-// Client send a request to the server 
-// server store to database or manipulate files
-// send a response to the client html or json
-// client ---> request ---> server ---> response ---> client
-
-// Program Lifecycle and Event Loop
-// nodejs uses an event-driven code("Event Loop") for running yout logic
-// the createServer() event never finishes by default
-
-
-// Request and response data is chunk (streams and buffers)
-// avoid double responses.
-
-// Node.js and core modules 
-// http, https, fs, path, os
-// import via require('module')
-
+app.listen(4000);
