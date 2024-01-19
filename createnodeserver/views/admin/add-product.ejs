@@ -17,6 +17,7 @@
                 <li class="main-header__item"><a  href="/">Shop</a></li>
                 <li class="main-header__item"><a  href="/products">Products</a></li>
                 <li class="main-header__item"><a  href="/cart">Cart</a></li>
+                <li class="main-header__item"><a  href="/orders">Orders</a></li>
                 <li class="main-header__item"><a class="active" href="/admin/add-product">Add Product</a></li>
                 <li class="main-header__item"><a class="active" href="/admin/products">Admin Products</a></li>
             </ul>
@@ -28,6 +29,18 @@
             <div class="form-control">
                 <label for="title">Title</label>
                 <input type="text" name="title" id="title">
+            </div>
+            <div class="form-control">
+                <label for="imageUrl">Image Url</label>
+                <input type="text" name="imageUrl" id="imageUrl">
+            </div>
+            <div class="form-control">
+                <label for="price">Price</label>
+                <input type="number" name="price" id="price" step="0.01">
+            </div>
+            <div class="form-control">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" rows="5"></textarea>
             </div>
             <button type="submit">Add Product</button>
         </form>
