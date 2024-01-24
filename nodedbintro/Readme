@@ -1,0 +1,23 @@
+What is Sequalize?
+
+An Object Relational Mapping Library
+it does all the heavy lifting, all the SQL code behind the scenes for us 
+and maps into js objects which we can call to execute that behind the scenes
+
+User
+------- =====Mapped ======> Users table
+name
+age
+email
+password
+
+
+const user = User.create({name:'Max', age:28, password:'dsdsdf'})
+
+Models ---------------> User.Product
+
+Instances ------------------> const user = User.build()
+
+Queries --------------------> User.findAll()
+
+Associations -----------------------> User.hasMany(Product)
