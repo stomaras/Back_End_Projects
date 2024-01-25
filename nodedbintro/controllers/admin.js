@@ -20,6 +20,7 @@ exports.postAddProduct = (req, res, next) => {
     description: description,
   }).then(result => {
     console.log('Created Product');
+    res.redirect('/admin/products');
   }).catch(err => {
     console.log(err);
   });
@@ -31,9 +32,9 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const prodId = req.params.productId;
-  Product.findAll({where: {id: prodId}})
+  Product.findByPk(prodId)
     .then(product => {
-      if(!product) {
+      if(!product){
         return res.redirect('/');
       }
       res.render('admin/edit-product', {
@@ -43,7 +44,7 @@ exports.getEditProduct = (req, res, next) => {
         product: product,
       });
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err))
 };
 
 exports.postEditProduct = (req, res, next) => {
@@ -52,15 +53,22 @@ exports.postEditProduct = (req, res, next) => {
   const updatedPrice = req.body.price;
   const updatedImageUrl = req.body.imageUrl;
   const updatedDesc = req.body.description;
-  const updatedProduct = new Product(
-    prodId,
-    updatedTitle,
-    updatedImageUrl,
-    updatedDesc,
-    updatedPrice
-  );
-  updatedProduct.save();
-  res.redirect('/admin/products');
+  Product.findByPk(prodId)
+  // will be executed when this promise is resolved so will not wait for this to finish , will move on on the next line
+  // so will redirect before our promises done, so we will move the redirect inside second then block
+  .then(product => {
+    product.title = updatedTitle;
+    product.price = updatedPrice;
+    product.description = updatedDesc;
+    product.imageUrl = updatedImageUrl;
+    // return a promise which we catch on second then
+    return product.save();
+  })
+  .then((result) => {
+    console.log('UPDATED PRODUCT!');
+    res.redirect('/admin/products');
+  })
+  .catch(err => console.log(err));
 };
 
 exports.getProducts = (req, res, next) => {
@@ -77,6 +85,15 @@ exports.getProducts = (req, res, next) => {
 
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.deleteById(prodId);
-  res.redirect('/admin/products');
+  Product.findByPk(prodId)
+  // return a promise
+  .then(product => {
+    return product.destroy();
+  })
+  // return a promise after delete done and redirect into the products page 
+  .then(result => {
+    console.log('DESTROYED PRODUCT');
+    res.redirect('/admin/products');
+  })
+  .catch(err => console.log(err))
 };
