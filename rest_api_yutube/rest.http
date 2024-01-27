@@ -1,0 +1,43 @@
+GET http://localhost:3000/products
+
+### Create a Product 
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name":"iMacpro",
+    "price":345
+}
+
+### GET a Product by Id
+GET http://localhost:3000/products/id
+
+### Update a Product by Id
+PATCH http://localhost:3000/products/id
+
+### Delete a Product by Id
+DELETE http://localhost:3000/products/id
+
+### 404 route Not Found
+GET http://localhost:3000/ad
+
+###
+GET http://localhost:3000/test?name=iMac&price=2345
+
+###
+GET http://localhost:3000/test/34787
+
+###
+POST http://localhost:3000/test
+Content-Type: application/json
+
+{
+    "name":"ImAC",
+    "price": 464
+}
+
+###
+POST http://localhost:3000/test
+Content-Type: application/x-www-form-urlencoded
+
+name=If&price=345
