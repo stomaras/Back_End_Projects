@@ -1,3 +1,4 @@
+
 GET http://localhost:3000/products
 
 ### Create a Product 
@@ -10,13 +11,19 @@ Content-Type: application/json
 }
 
 ### GET a Product by Id
-GET http://localhost:3000/products/id
+GET http://localhost:3000/products/65b53a435fb9d827881057af
 
 ### Update a Product by Id
-PATCH http://localhost:3000/products/id
+PATCH http://localhost:3000/products/65b53a435fb9d827881057af
+Content-Type: application/json
+
+{
+    "name": "iMac"
+}
+
 
 ### Delete a Product by Id
-DELETE http://localhost:3000/products/id
+DELETE http://localhost:3000/products/65b4f6cf84714a947b03265e
 
 ### 404 route Not Found
 GET http://localhost:3000/ad
