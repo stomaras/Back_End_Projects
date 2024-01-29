@@ -1,0 +1,15 @@
+// Get All posts 
+GET http://localhost:8080/feed/posts
+
+// Create a post
+
+POST http://localhost:8080/feed/post
+Content-Type: application/json
+
+{
+      "_id": "1121212", 
+      "title": "titleeee", 
+      "content": "content",
+      "creator": {"name":"Max"},
+      "createdAt": "01/01/1998"
+}  
