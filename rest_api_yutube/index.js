@@ -1,17 +1,36 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const createError = require('http-errors');
-
+const dotenv = require('dotenv').config();
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
-mongoose.connect('mongodb://localhost:27017/RestAPI_youtube')
+mongoose.connect(process.env.MONGODB_URI)
 .then(() => {
     console.log('mongodb is connected');
 })
+
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose connected to db...');
+});
+
+mongoose.connection.on('error', (err) => {
+    console.log(err.message);
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log('Mongoose connection is disconnected');
+});
+
+process.on('SIGINT', () => {
+    mongoose.connection.close(() => {
+        console.log("Mongoose connection is disconnected due to app termination...");
+        process.exit(0);
+    });
+});
 
 app.all('/test', (req,res) => {
     // console.log(req.query);
@@ -44,6 +63,9 @@ app.use((err, req, res, next) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log("server started on port 3000");
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    console.log('server started on port ' + PORT + '...');
 })
