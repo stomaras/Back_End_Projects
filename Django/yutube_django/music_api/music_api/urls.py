@@ -11,5 +11,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('admin/', admin.site.urls),
     path('hello-world/', views.hello_world, name='hello-world'),
-    path('artists/', views.ArtistView.as_view(), name='artists')
+    path('artists/', views.ArtistView.as_view(), name='artists'),
+    path('artists/<int:pk>/', views.ArtistDetailView.as_view(), name='artist-detail')
 ]
