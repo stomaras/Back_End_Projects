@@ -1,0 +1,10 @@
+.ul-post {
+    display: flex;
+    flex-direction: row;
+}
+
+.li-post {
+    align-self: center;
+    text-decoration: none;
+    list-style: none;
+}
