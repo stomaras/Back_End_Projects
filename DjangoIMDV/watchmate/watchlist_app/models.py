@@ -20,7 +20,6 @@ class WatchList(models.Model):
         return self.title
     
     
-    
 class Review(models.Model):
     rating = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     description = models.CharField(max_length=200, null=True)
