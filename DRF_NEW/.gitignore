@@ -1,3 +1,9 @@
 venv/
+drfecommerce/requirements/txt
+drfecommerce/drfecommerce/__init__.py
 __pycache__
 __init__.py
+**__pycache__/
+schema.yml
+.pytest_cache
+*-commands.md
