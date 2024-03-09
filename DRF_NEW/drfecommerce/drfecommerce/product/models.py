@@ -3,6 +3,12 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 # Create your models here.
 
+class ActiveQueryset(models.QuerySet):
+    # def get_queryset(self):
+    #     return super().get_queryset().filter(is_active=True)
+    def isactive(self):
+        return self.filter(is_active=True)
+
 class Category(MPTTModel):
     name = models.CharField(max_length=100)
     parent = TreeForeignKey("self", on_delete=models.PROTECT, null=True, blank=True)
@@ -31,6 +37,9 @@ class Product(models.Model):
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
     category = TreeForeignKey("Category", on_delete=models.SET_NULL, null=True, blank=True)
     is_active = models.BooleanField(default=False)
+    
+    objects = ActiveQueryset.as_manager()
+    # isactive = ActiveManager()
     
     def __str__(self):
         return self.name
