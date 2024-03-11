@@ -1,6 +1,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
-
+from .fields import OrderField
 # Create your models here.
 
 class ActiveQueryset(models.QuerySet):
@@ -50,3 +50,8 @@ class ProductLine(models.Model):
     stock_qty = models.IntegerField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="product_line")
     is_active = models.BooleanField(default=False)
+    order = OrderField(unique_for_field="product", blank=True)
+    objects = ActiveQueryset.as_manager()
+    
+    def __str__(self):
+        return str(self.order)
