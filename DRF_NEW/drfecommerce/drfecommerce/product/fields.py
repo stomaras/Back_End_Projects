@@ -21,3 +21,6 @@ class OrderField(models.PositiveIntegerField):
         elif self.unique_for_field not in [f.name for f in self.model._meta.get_fields()]:
             return [checks.Error('OrderField entered does not match an existing model field')]
         return []
+    
+    def pre_save(self, model_instance, add):
+        return super().pre_save(model_instance, add)
