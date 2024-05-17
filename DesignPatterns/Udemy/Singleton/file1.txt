@@ -1,0 +1,16 @@
+[2024-05-17 16:37:25.914524] - INFO: This is an information
+[2024-05-17 16:37:25.914524] - WARNING: Warning of a impeding danger
+[2024-05-17 16:37:25.915523] - ERROR: This is an error
+[2024-05-17 16:37:25.915523] - CRITICAL: This is a critical Mistake
+[2024-05-17 16:37:25.916525] - INFO: ...This is an information
+[2024-05-17 16:37:25.916525] - WARNING: ...Warning of a impeding danger
+[2024-05-17 16:37:25.916525] - ERROR: ...This is an error
+[2024-05-17 16:37:25.917523] - CRITICAL: ...This is a critical Mistake
+[2024-05-17 16:47:09.478316] - INFO: This is an information
+[2024-05-17 16:47:09.478316] - WARNING: Warning of a impeding danger
+[2024-05-17 16:47:09.479222] - ERROR: This is an error
+[2024-05-17 16:47:09.479222] - CRITICAL: This is a critical Mistake
+[2024-05-17 16:47:09.480761] - INFO: ...This is an information
+[2024-05-17 16:47:09.481778] - WARNING: ...Warning of a impeding danger
+[2024-05-17 16:47:09.481778] - ERROR: ...This is an error
+[2024-05-17 16:47:09.481778] - CRITICAL: ...This is a critical Mistake
