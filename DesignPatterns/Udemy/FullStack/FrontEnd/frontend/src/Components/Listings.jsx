@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 // React Leaflet
 import { MapContainer, TileLayer, Marker, Popup,  } from 'react-leaflet'
@@ -30,18 +30,24 @@ const Listings = () => {
         iconSize: [40,40],
     });
 
+    const [latitude, setLatitude] = useState(51.505);
+    const [longitude, setLongitude] = useState(-0.09);
+
+    function GoEast() {
+        setLatitude(51.497)
+        setLongitude(0.09)
+    }
+
+    function GoCenter() {
+        setLatitude(51.505)
+        setLongitude(-0.09)
+    }
+
   return (
     <Grid container>
         <Grid item xs={4}>
-            <Typography variant="h1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus necessitatibus voluptates nam debitis ut.
-                 Et aliquam nihil reiciendis nemo dolorem iusto magni, dolor ullam itaque accusamus totam veritatis fugit illum
-                  deleniti quaerat eligendi odio architecto cum culpa perspiciatis soluta ipsa delectus? Repellat rerum in omnis 
-                  sed nemo quam reprehenderit labore eius molestiae consectetur facere at fugiat qui vel esse recusandae praesentium, 
-                  quo pariatur sunt tempora aspernatur culpa. Beatae dolores, deleniti quam quia, laboriosam vel unde corrupti vero quos dolorem,
-                   maiores molestias impedit tempore cum 
-                alias dolore soluta minus! Accusamus blanditiis illum corrupti neque libero corporis et magnam id impedit ex.
-            </Typography>
+            <Button onClick={GoEast}>GO EAST</Button>
+            <Button onClick={GoCenter}>GO CENTER</Button>
         </Grid>
         <Grid item xs={8}>
             <AppBar position="sticky">
@@ -51,7 +57,7 @@ const Listings = () => {
                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker icon={houseIcon} position={[51.505, -0.09]}>
+                    <Marker icon={houseIcon} position={[latitude, longitude]}>
                         <Popup>
                             <Typography variant="h5">A title</Typography>
                             <img src={img1} style={{height:'14rem', width:'18rem'}}/>
