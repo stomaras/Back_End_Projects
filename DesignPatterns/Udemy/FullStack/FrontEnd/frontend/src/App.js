@@ -7,7 +7,9 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Home from './Components/Home';
 import Login from './Components/Login';
 import Listings from './Components/Listings';
-
+import { StyledEngineProvider } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline';
+import Header from './Components/Header';
 const theFruits = [
   {id: 1, name:'Apple',color:'red'},
   {id: 2, name:'Orange', color:'orange'},
@@ -21,13 +23,18 @@ const theFruits = [
 
 function App() {
   return (
-    <BrowserRouter>
+    <StyledEngineProvider injectFirst>
+      <BrowserRouter>
+      <CssBaseline/>
+      <Header/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/listings' element={<Listings/>}/>
       </Routes>
     </BrowserRouter>
+    </StyledEngineProvider>
+
   );
 }
 
