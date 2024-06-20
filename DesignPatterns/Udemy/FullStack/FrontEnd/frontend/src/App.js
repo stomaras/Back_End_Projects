@@ -3,7 +3,10 @@ import './App.css';
 import SecondComponent from './Components/SecondComponent';
 import AppleComponent from './Components/AppleComponent';
 import Fruit from "./Components/Fruit";
-
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Home from './Components/Home';
+import Login from './Components/Login';
+import Listings from './Components/Listings';
 
 const theFruits = [
   {id: 1, name:'Apple',color:'red'},
@@ -18,9 +21,13 @@ const theFruits = [
 
 function App() {
   return (
-    <div>
-      <AppleComponent/>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/listings' element={<Listings/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
