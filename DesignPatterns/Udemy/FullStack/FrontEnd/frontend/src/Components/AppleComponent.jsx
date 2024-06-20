@@ -22,13 +22,27 @@ function AppleComponent() {
         setNumberOfApples(currentValue => currentValue - 1)
     }
 
+    function TooManyDisplay() {
+        if(numberOfApples > 10) {
+            return <h1>John has too many apples</h1>;
+        }else{
+            return "";
+        }
+    }
+
     return (
     <>
         <div>
             {AppleDisplay(numberOfApples)}
         </div>  
         <button onClick={IncreaseApple} className="add-btn">Increase</button>
-        <button onClick={DecreaseApple} className="decrease-btn">Decrease</button>  
+        <button 
+            style={{display: numberOfApples <=0 ? "None":""}}
+            onClick={DecreaseApple} 
+            className="decrease-btn">
+        Decrease
+        </button>  
+        {TooManyDisplay()}
     </>
     )
 }
