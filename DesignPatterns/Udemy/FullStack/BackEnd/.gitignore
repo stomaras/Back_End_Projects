@@ -1,0 +1,5 @@
+/myvenv/
+/backend/backend/__pycache__
+/backend/backend/__init__.py
+/backend/listings/migrations/
+/backend/listings/__init__.py   
