@@ -18,3 +18,8 @@ of the query execution algorithm, with subclasses customizing specific steps suc
 - Concrete Class: These are the subclasses that inherit from the abstract class and provide concrete implementations for the abstract methods defined in the abstract class. Each concrete class represents a specific variation or customization of the algorithm.
 
 - Template Method: This is a method defined in the abstract class, which provides the overall algorithm structure. It consists of a series of steps or method calls, some of which are implemented directly in the abstract class and others that are left to be implemented by the concrete subclasses.
+
+# Notes
+
+Template Method vs Strategy Pattern: The template method pattern and the strategy pattern share similarities, but they differ in theri intent. The template method pattern focuses on defining the overall algorithm structure with varying steps, while the strategy pattern
+focuses on encapsulating interchangeable algorithms. The template method pattern uses inheritance, whereas the strategy pattern uses composition.
