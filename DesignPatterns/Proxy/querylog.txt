@@ -1,0 +1,2 @@
+2024-07-03 16:38:36.817667 Result for query 'SELECT * FROM users'
+2024-07-03 16:38:54.375283 Result for query 'SELECT * FROM users'
