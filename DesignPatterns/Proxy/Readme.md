@@ -14,3 +14,10 @@ The proxy object act as an intermediary between the client and the real object, 
 - Proxy: This is an object that acts as an intermediary between the client and the RealSubject. It implements the same interface as the RealSubject and forwards requests from the client to the RealSubject, addding its own behavior before or after forwarding the request.
 
 - Client: This is the object that interacts with the Proxy object to perfrom operations on the RealSubject. The client interacts with the Proxy object in the same way as it would with the RealSubject object, without being aware of the actual object it is working with.
+
+
+# Advantages and Disadvantages
+
+- Provides a level of indirection: The proxy acts as an intermediary between the client and the real object, providing an additional 
+level of indirection. This can help to decouple the client from the real object, making it easier to modify or replace the real subject
+without affecting the client.
