@@ -48,3 +48,6 @@ remoteControl = RemoteControl()
 
 remoteControl.set_command(turn_on)
 remoteControl.press_button()
+
+remoteControl.set_command(turn_off)
+remoteControl.press_button()
